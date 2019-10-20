@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="block">
+			<div class="async" onmouseover="startAsync()" ; onmouseout="endAsync()">
+				<div>&lt;script src="1.js" async&gt; &lt;/script&gt;</div>
+				<div>&lt;script src="2.js" async&gt; &lt;/script&gt;</div>
+			</div>
+			<div class="block__text">
+				<div id="async"></div>
+			</div>
+		</div>
+		<div class="block" onmouseover="startDefer()" ; onmouseout="endDefer()">
+			<div class="defer">
+				<div>&lt;script src="1.js" defer&gt; &lt;/script&gt;</div>
+				<div>&lt;script src="2.js" defer&gt; &lt;/script&gt;</div>
+			</div>
+			<div class="block__text">
+				<div id="defer"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>	
+	  "use strict";
+		
+	  /**
+       * Выводит текст при наведении на блок.
+       */
+	  function startAsync() {
+		  var elemAsinc = document.getElementById("async");
+		  elemAsinc.innerHTML = "В этом коде (с async) первым сработает тот скрипт, который раньше  загрузится.";
+		}
+		
+      /**
+       * Удаляет текст при отведении с блока.
+       */
+	  function endAsync() {
+		  var elemendAsync = document.getElementById("async");
+		  elemendAsync.innerHTML = "";
+		}
+		
+	  /**
+       * Выводит текст при наведении на блок.
+       */
+	  function startDefer() {
+		  var elemDefer = document.getElementById("defer");
+		  elemDefer.innerHTML ="В этом коде (с defer) первым сработает всегда 1.js, а скрипт 2.js, даже  если загрузился раньше, будет его ждать.";
+		}
+		
+      /**
+       * Удаляет текст при отведении с блока.
+       */
+	  function endDefer() {
+		  var elemEndDefer = document.getElementById("defer");
+		  elemEndDefer.innerHTML = "";
+		}
+
+	</script>
+</body>
+
+</html>
